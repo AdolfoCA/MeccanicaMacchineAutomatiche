@@ -3,7 +3,7 @@ function [P] = kin_dir_pos(Q) %P[X Y alpha]
 % varaibili di giunto 
 global l d
 xc1=Q(1);
-xc5=Q(2);
+%xc5=Q(2);
 q2=Q(3);
 
 % prendo le seconde soluzioni 

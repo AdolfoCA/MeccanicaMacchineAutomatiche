@@ -34,5 +34,6 @@ plot(P(1),P(2),'o')
 xlim([-0.5 2.5])
 ylim([-0.5 2.5])
 
+J=jacobian_tesina(Q);
 
 

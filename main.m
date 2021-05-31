@@ -7,6 +7,7 @@ l=1;
 d=0.5;
 
 Q=[1*1; 1*1.5; pi/2+0.2]
+dQ=[0.2; 0.1; 0.1]
 
 P=kin_dir_pos(Q);
 
@@ -34,6 +35,6 @@ plot(P(1),P(2),'o')
 xlim([-0.5 2.5])
 ylim([-0.5 2.5])
 
-J=jacobian_tesina(Q);
-
-
+dP=kin_dir_vel(Q,dQ)
+dQ_test=kin_inv_vel(dP,Q)
+dP_test=kin_dir_vel(Q,dQ_test)

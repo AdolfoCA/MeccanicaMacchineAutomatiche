@@ -82,8 +82,8 @@ eq16 = ddalpha-ddq2-ddq3;
 eq17 = q5-q4+pi-q2-q3;
 eq18 = ep-pi+q2+q3;
 
-sol = solve(eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11,eq12,eq13,eq14,eq16,eq17,eq18,...
-    ddPx,ddPy,Fx,Fy,Mf,I3,ddx2,ddy2,ddalpha,H3,H2,R1,R5,ddq4,ddq3,ep,q5);
+sol = solve(eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11,eq12,eq13,eq14,eq16,ddPx,ddPy,...
+    Fx,Fy,Mf,I3,ddx2,ddy2,ddalpha,H3,H2,R1,R5,ddq4,ddq3);
 
 ddPx = simplify(sol.ddPx);
 ddPy = simplify(sol.ddPy);

@@ -59,7 +59,7 @@ I5 = I2;
 I3 = I2 + 1/12 * ma*d^2 + ma*(d^2/4+l^2/4);
 
 eq1 = tau1-H2-m1*ddxc1;
-eq2 = R1-V2-m1*g;
+%eq2 = R1-V2-m1*g;
 eq3 = -tau2-M1;
 
 eq4 = H2+H3-tau1-ma*ddx2;
@@ -72,9 +72,9 @@ eq9 = Mf+2*ma*g*( (l/2-d/4*tan(ep)) *cos(ep) )+V4*l*cos(ep)-H4*l*sin(ep)-I3*(ddq
 
 eq10 = -H4+H5-ma*ddx4;
 eq11 = V4+V5-ma*g-tau5-ma*ddy4;
-eq12 = -ma*g*l/2*cos(q5)+H4*l*sin(q5)+l*V4*cos(q5)-I5*(q5);
+eq12 = -ma*g*l/2*cos(q5)+H4*l*sin(q5)+l*V4*cos(q5)-I5*(ddq2+ddq3+ddq4);
 
-eq13 = R5-H5;
+%eq13 = R5-H5;
 eq14 = tau5-m1*g-V5-m1*ddxc5;
 %eq15 = M5;
 eq16 = ddalpha-ddq2-ddq3;
@@ -82,12 +82,12 @@ eq16 = ddalpha-ddq2-ddq3;
 eq17 = q5-q4+pi-q2-q3;
 eq18 = ep-pi+q2+q3;
 
-sol = solve(eq1,eq2,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11,eq12,eq13,eq14,eq16,eq17,eq18,...
-    ddPx,ddPy,Fx,Fy,Mf,I3,ddx2,ddy2,ddalpha,H3,H2,R1,R5,ddq4,ddq3,ep,q5);
+sol2 = solve(eq1,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11,eq12,eq14,eq16,eq17,eq18,...
+      ddPx,ddPy,Fx,Fy,Mf,I3,ddx2,ddy2,ddalpha,H3,H2,ddq4,ddq3,ep,q5);
 
-ddPx = simplify(sol.ddPx);
-ddPy = simplify(sol.ddPy);
-ddalpha = simplify(sol.ddalpha);
+ddPx = simplify(sol2.ddPx);
+ddPy = simplify(sol2.ddPy);
+ddalpha = simplify(sol2.ddalpha);
 
 
 

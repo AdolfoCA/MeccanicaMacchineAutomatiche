@@ -29,7 +29,7 @@ eq1 = tau1-H2-m1*ddxc1;
 eq2 = R1-V2-m1*g;
 %eq3 = -tau2-M1;
 
-eq4 = H2+H3-ma*ddx2;
+eq4 = H2+H3-ma*(ddxc1-l/2*(cos(q2)*dq2^2+sin(q2)*ddq2)); % l'ultimo terime è ddx2
 eq5 = V2-ma*g-V3-ma*ddy2;
 eq6 = tau2-l/2*ma*g*cos(q2)-l*V3*cos(q2)-l*H3*sin(q2)-I2*ddq2;
 
@@ -38,7 +38,7 @@ eq8 = V3-V4-2*ma*g+Fy-2*ma*ddPy;
 eq9 = Mf+2*ma*g*( (l/2-d/4*tan(ep)) *cos(ep) )+V4*l*cos(ep)-H4*l*sin(ep)-I3*(ddq2+ddq3);
 
 eq10 = -H4-H5-ma*ddx4;
-eq11 = V4-V5-ma*g-ma*ddy4;
+eq11 = V4-V5-ma*g-ma*(ddxc5+(ddq2+ddq3+ddq4)*l/2*cos(q5)-(dq2+dq3+dq4)^2*l/2*sin(q5)); %l'ultimo termine è ddy4
 eq12 = -ma*g*l/2*cos(q5)+H4*l*sin(q5)+l*V4*cos(q5)-I5*(ddq2+ddq3+ddq4);
 
 eq13 = R5+H5;
@@ -52,9 +52,12 @@ eq18 = ep-pi+q2+q3;
 sol2 = solve(eq1,eq2,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11,eq12,eq13,eq14,eq16,eq17,eq18,...
       tau1,tau2,tau5,H2,V2,H3,V3,H4,V4,H5,V5,R1,R5,ddalpha,ep,q5);
 
+  
+% Devo esprimere ddq3 e ddq4 in funzione delle varaibili di giunto!!
 tau1 = simplify(sol2.tau1)
 tau2 = simplify(sol2.tau2)
 tau5 = simplify(sol2.tau5)
+
 
 % Matrice di massa 
 M11 = simplify(diff(tau1,ddxc1));

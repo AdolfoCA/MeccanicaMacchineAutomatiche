@@ -1,5 +1,6 @@
 function [q3,q4]=clc_q3_q4(Q)
 global l
+
 xc1=Q(1);
 xc5=Q(2);
 q2=Q(3);

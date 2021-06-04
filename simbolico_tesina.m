@@ -2,7 +2,7 @@ clc
 close all
 clear all
 
-syms xc1 xc5 q2 q3 q4 d l Px Py alpha beta gamma dxc1 dxc5 dq2 real
+syms xc1 xc5 q2 q3 q4 d l Px Py alpha beta gamma dxc1 dxc5 dq2 ddxc1 ddxc5 ddq2 real
 
 global l d m1 ma g
 
@@ -17,9 +17,11 @@ sol=solve(eq1,eq2,eq3,eq4,gamma,beta,q3,q4);
 q3=simplify(sol.q3(2));
 q4=simplify(sol.q4(2));
 % %
-% dq3=simplify(diff(q3,xc1,1)*dxc1+diff(q3,xc5,1)*dxc5+diff(q3,q2,1)*dq2);
-% dq4=simplify(diff(q4,xc1,1)*dxc1+diff(q4,xc5,1)*dxc5+diff(q4,q2,1)*dq2);
+dq3=simplify(diff(q3,xc1,1)*dxc1+diff(q3,xc5,1)*dxc5+diff(q3,q2,1)*dq2);
+dq4=simplify(diff(q4,xc1,1)*dxc1+diff(q4,xc5,1)*dxc5+diff(q4,q2,1)*dq2);
 % 
+ddq3=simplify(diff(dq3,xc1,1)*dxc1+diff(dq3,xc5,1)*dxc5+diff(dq3,q2,1)*dq2+diff(dq3,dxc1,1)*ddxc1+diff(dq3,dxc5,1)*ddxc5+diff(dq3,dq2,1)*ddq2);
+ddq4=simplify(diff(dq4,xc1,1)*dxc1+diff(dq4,xc5,1)*dxc5+diff(dq4,q2,1)*dq2+diff(dq4,dxc1,1)*ddxc1+diff(dq4,dxc5,1)*ddxc5+diff(dq4,dq2,1)*ddq2);
 % 
 % %PER TROVARE XC1 E Q2
 % eq1=xc1+l*cos(q2)+l/2*cos(alpha+pi/2)+d*cos(alpha)-Px;

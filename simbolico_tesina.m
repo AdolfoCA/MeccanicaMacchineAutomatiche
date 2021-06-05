@@ -36,8 +36,8 @@ dq4 =...
 % ddq3_perM = simplify(diff(dq3,dxc1,1)*ddxc1+diff(dq3,dxc5,1)*ddxc5+diff(dq3,dq2,1)*ddq2) 
 % ddq4_perM = simplify(diff(dq4,dxc1,1)*ddxc1+diff(dq4,dxc5,1)*ddxc5+diff(dq4,dq2,1)*ddq2)
 
-ddq3=simplify(diff(dq3,xc1,1)*dxc1+diff(dq3,xc5,1)*dxc5+diff(dq3,q2,1)*dq2+diff(dq3,dxc1,1)*ddxc1+diff(dq3,dxc5,1)*ddxc5+diff(dq3,dq2,1)*ddq2);
-ddq4=simplify(diff(dq4,xc1,1)*dxc1+diff(dq4,xc5,1)*dxc5+diff(dq4,q2,1)*dq2+diff(dq4,dxc1,1)*ddxc1+diff(dq4,dxc5,1)*ddxc5+diff(dq4,dq2,1)*ddq2);
+ddq3=(diff(dq3,xc1,1)*dxc1+diff(dq3,xc5,1)*dxc5+diff(dq3,q2,1)*dq2+diff(dq3,dxc1,1)*ddxc1+diff(dq3,dxc5,1)*ddxc5+diff(dq3,dq2,1)*ddq2);
+ddq4=(diff(dq4,xc1,1)*dxc1+diff(dq4,xc5,1)*dxc5+diff(dq4,q2,1)*dq2+diff(dq4,dxc1,1)*ddxc1+diff(dq4,dxc5,1)*ddxc5+diff(dq4,dq2,1)*ddq2);
 
 
 %% PER TROVARE XC1 E Q2

@@ -21,7 +21,7 @@ global l d m1 ma g
 % dq4=simplify(diff(q4,xc1,1)*dxc1+diff(q4,xc5,1)*dxc5+diff(q4,q2,1)*dq2);
 % 
 % 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 q3 = ...
  -q2 - 2*atan((2*l*xc5 + (-(2*l*xc1 + l^2 + l^2*tan(q2/2)^2 + xc1^2 + xc5^2 + xc1^2*tan(q2/2)^2 + xc5^2*tan(q2/2)^2 - 4*l*xc5*tan(q2/2) - 2*l*xc1*tan(q2/2)^2)*(2*l*xc1 - 3*l^2 - 3*l^2*tan(q2/2)^2 + xc1^2 + xc5^2 + xc1^2*tan(q2/2)^2 + xc5^2*tan(q2/2)^2 - 4*l*xc5*tan(q2/2) - 2*l*xc1*tan(q2/2)^2))^(1/2) - 4*l^2*tan(q2/2) + 2*l*xc5*tan(q2/2)^2)/(3*l^2*tan(q2/2)^2 - l^2 + xc1^2 + xc5^2 + xc1^2*tan(q2/2)^2 + xc5^2*tan(q2/2)^2 - 4*l*xc5*tan(q2/2) - 4*l*xc1*tan(q2/2)^2) - (4*(l*xc5 - 2*l^2*tan(q2/2) + l*xc5*tan(q2/2)^2))/(3*l^2*tan(q2/2)^2 - l^2 + xc1^2 + xc5^2 + xc1^2*tan(q2/2)^2 + xc5^2*tan(q2/2)^2 - 4*l*xc5*tan(q2/2) - 4*l*xc1*tan(q2/2)^2));
 q4 = ...
@@ -40,10 +40,10 @@ ddq3=(diff(dq3,xc1,1)*dxc1+diff(dq3,xc5,1)*dxc5+diff(dq3,q2,1)*dq2+diff(dq3,dxc1
 ddq4=(diff(dq4,xc1,1)*dxc1+diff(dq4,xc5,1)*dxc5+diff(dq4,q2,1)*dq2+diff(dq4,dxc1,1)*ddxc1+diff(dq4,dxc5,1)*ddxc5+diff(dq4,dq2,1)*ddq2);
 
 
-%% PER TROVARE XC1 E Q2
+%% PER TROVARE XC1 XC5 e Q2
 % eq1=xc1+l*cos(q2)+l/2*cos(alpha+pi/2)+d*cos(alpha)-Px;
 % eq2=l*sin(q2)+l/2*sin(alpha+pi/2)+d*sin(alpha)-Py;
-% %
+% 
 % sol_1=solve(eq1,eq2,xc1,q2);
 % xc1_1=simplify(sol_1.xc1(1));
 % xc1_2=simplify(sol_1.xc1(2));
@@ -61,51 +61,10 @@ ddq4=(diff(dq4,xc1,1)*dxc1+diff(dq4,xc5,1)*dxc5+diff(dq4,q2,1)*dq2+diff(dq4,dxc1
 
 
 
-%PER TROVARE LA JJACOBIANA
+%% PER TROVARE LA JACOBIANA
 % P(1) = xc1+l*cos(q2)+l/2*cos(q2+q3)+d*cos(alpha);
 % P(2) = l*sin(q2)+l/2*sin(q2+q3)+d*sin(alpha);
 % P(3) = q2 + q3 - pi/2;
 % 
 % J=simplify(jacobian([P(1) P(2) P(3)],[xc1 xc5 q2]))
 
-% %% DINAMICA
-% syms tau1 tau2 tau5 R1 R5 H2 V2 H3 V3 H4 V4 H5 V5 M1 M5 Fx Fy Mf ...
-%      ddxc1 ddxc5 ddq2 ddx2 ddy2 ddPx ddPy ddq3 ddx4 ddy4 ddalpha ddq4 ...
-%      I3 I2 I5 ma m1 d g l q5 ep real
-% 
-% %Inerzia asta 
-% I2 = ma*l^2/4 + 1/12 *ma*l^2;
-% I5 = I2;
-% I3 = I2 + 1/12 * ma*d^2 + ma*(d^2/4+l^2/4);
-% 
-% eq1 = tau1-H2-m1*ddxc1;
-% %eq2 = R1-V2-m1*g;
-% eq3 = -tau2-M1;
-% 
-% eq4 = H2+H3-tau1-ma*ddx2;
-% eq5 = V2-ma*g-V3-ma*ddy2;
-% eq6 = tau2-l/2*ma*g*cos(q2)-l*V3*cos(q2)-l*H3*sin(q2)-I2*ddq2;
-% 
-% eq7 = H4-H3+Fx-2*ma*ddPx;
-% eq8 = V3-V4-2*ma*g+Fy-2*ma*ddPy;
-% eq9 = Mf+2*ma*g*( (l/2-d/4*tan(ep)) *cos(ep) )+V4*l*cos(ep)-H4*l*sin(ep)-I3*(ddq2+ddq3);
-% 
-% eq10 = -H4+H5-ma*ddx4;
-% eq11 = V4+V5-ma*g-tau5-ma*ddy4;
-% eq12 = -ma*g*l/2*cos(q5)+H4*l*sin(q5)+l*V4*cos(q5)-I5*(ddq2+ddq3+ddq4);
-% 
-% %eq13 = R5-H5;
-% eq14 = tau5-m1*g-V5-m1*ddxc5;
-% %eq15 = M5;
-% eq16 = ddalpha-ddq2-ddq3;
-% 
-% eq17 = q5-q4+pi-q2-q3;
-% eq18 = ep-pi+q2+q3;
-% 
-% sol2 = solve(eq1,eq3,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11,eq12,eq14,eq16,eq17,eq18,...
-%       ddPx,ddPy,Fx,Fy,Mf,I3,ddx2,ddy2,ddalpha,H3,H2,ddq4,ddq3,ep,q5);
-% 
-% ddPx = simplify(sol2.ddPx);
-% ddPy = simplify(sol2.ddPy);
-% ddalpha = simplify(sol2.ddalpha);
-% 

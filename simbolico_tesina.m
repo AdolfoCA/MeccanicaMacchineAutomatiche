@@ -67,4 +67,5 @@ ddq4=(diff(dq4,xc1,1)*dxc1+diff(dq4,xc5,1)*dxc5+diff(dq4,q2,1)*dq2+diff(dq4,dxc1
 % P(3) = q2 + q3 - pi/2;
 % 
 % J=simplify(jacobian([P(1) P(2) P(3)],[xc1 xc5 q2]))
+% dJ=diff(J,xc1)*dxc1+diff(J,xc5)*dxc5+diff(J,q2)*dq2
 

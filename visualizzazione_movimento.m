@@ -4,8 +4,12 @@ close all
 l=0.99; d=0.49;
 
 % Utilizzo i dati salvati dalla simulazione
-Q=out.simout.Data(:,:);
-P=out.simout1.Data(:,:);
+% Q=out.simout.Data(:,:);
+% P=out.simout1.Data(:,:);
+
+% Utilizzo i dati salvati nel file simulazione
+load('Simulazioni/P_1.mat')
+load('Simulazioni/Q_1.mat')
 
 % Grafica
 for i=1:10:length(Q)

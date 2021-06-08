@@ -1,2 +1,2 @@
 # MeccanicaMacchineAutomatiche
-
+Partendo dallo studio della cinematica del manipolare a tre gradi di libertà è statosviluppato il modello della dinamica individuando le matrici di massa, di gravità e diCoriolis per poi implementare un controllo PD basato su una pianificazione trapezoidale divelocità. Dalle simulazioni fatte si osserva come in assenza di guadagno per il controllorePD l’errore di posizione e di velocità tenda a divergere, mentre aumentando il guadagnodel proporzionale e del derivativo l’errore di posizione tende asintoticamente a zero

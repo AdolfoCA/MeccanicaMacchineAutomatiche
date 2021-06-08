@@ -32,18 +32,16 @@ eq16 = ddalpha-ddq2-ddq3;
 eq17 = q5-q4+pi-q2-q3;
 eq18 = ep-pi+q2+q3;
 
-sol2 = solve(eq1,eq2,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11,eq12,eq13,eq14,eq16,eq17,eq18,...
+%Risoluzione sistema
+sol = solve(eq1,eq2,eq4,eq5,eq6,eq7,eq8,eq9,eq10,eq11,eq12,eq13,eq14,eq16,eq17,eq18,...
       tau1,tau2,tau5,H2,V2,H3,V3,H4,V4,H5,V5,R1,R5,ddalpha,ep,q5);
 
-tau1 = simplify(sol2.tau1);
-tau2 = simplify(sol2.tau2);
-tau5 = simplify(sol2.tau5);
+tau1 = simplify(sol.tau1);
+tau2 = simplify(sol.tau2);
+tau5 = simplify(sol.tau5);
 
-% save('C:\Users\giola\Desktop\tau1_s.mat','tau1')
-% save('C:\Users\giola\Desktop\tau2_s.mat','tau2')
-% save('C:\Users\giola\Desktop\tau5_s.mat','tau5')
 
-%calcolo ddPx ddPy 
+%Calcolo ddPx ddPy 
 % %q3
 % q3=-q2 - 2*atan((2*l*xc5 + (-(2*l*xc1 + l^2 + l^2*tan(q2/2)^2 + xc1^2 + xc5^2 + xc1^2*tan(q2/2)^2 + xc5^2*tan(q2/2)^2 - 4*l*xc5*tan(q2/2) - 2*l*xc1*tan(q2/2)^2)*(2*l*xc1 - 3*l^2 - 3*l^2*tan(q2/2)^2 + xc1^2 + xc5^2 + xc1^2*tan(q2/2)^2 + xc5^2*tan(q2/2)^2 - 4*l*xc5*tan(q2/2) - 2*l*xc1*tan(q2/2)^2))^(1/2) - 4*l^2*tan(q2/2) + 2*l*xc5*tan(q2/2)^2)/(3*l^2*tan(q2/2)^2 - l^2 + xc1^2 + xc5^2 + xc1^2*tan(q2/2)^2 + xc5^2*tan(q2/2)^2 - 4*l*xc5*tan(q2/2) - 4*l*xc1*tan(q2/2)^2) - (4*(l*xc5 - 2*l^2*tan(q2/2) + l*xc5*tan(q2/2)^2))/(3*l^2*tan(q2/2)^2 - l^2 + xc1^2 + xc5^2 + xc1^2*tan(q2/2)^2 + xc5^2*tan(q2/2)^2 - 4*l*xc5*tan(q2/2) - 4*l*xc1*tan(q2/2)^2));
 % 

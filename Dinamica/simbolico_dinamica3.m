@@ -14,7 +14,7 @@ tau1=var1.tau1;
 tau5=var5.tau5;
 tau2=var2.tau2;
 
-
+%Calcolo matrice di massa M
 M11=diff(tau1,ddxc1);
 M12=diff(tau1,ddxc5);
 M13=diff(tau1,ddq2);
@@ -27,15 +27,16 @@ M31=diff(tau2,ddxc1);
 M32=diff(tau2,ddxc5);
 M33=diff(tau2,ddq2);
 
+M=[M11 M12 M13; M21 M22 M23; M31 M32 M33];
 
+%Calcolo matrice di gravità G
 G1=diff(tau1,g)
 G2=diff(tau5,g)
 G3=diff(tau2,g)
 
-M=[M11 M12 M13; M21 M22 M23; M31 M32 M33];
-
 G=[G1;G2;G3]*g;
 
+%Calcolo matrice di Coriolus V
 V=[tau1;tau5;tau2]-M*[ddxc1;ddxc5;ddq2]-G;
 
 

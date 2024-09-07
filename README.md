@@ -1,2 +1,2 @@
-# MeccanicaMacchineAutomatiche
+# Mechanics of Automatic Machines
 Starting from the study of the kinematics of manipulating three degrees of freedom, the dynamics model was developed by identifying the mass, gravity and Coriolis matrices and then implementing a PD control based on a trapezoidal speed planning. From the simulations it is observed as in absence of gain for the controller PD the error of position and speed tends to diverge, while increasing the gain of the proportional and of the derivative the error of position asymptotically tends to zero
